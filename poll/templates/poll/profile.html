@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <br><br>
+    <h4 class="header center orange-text">Profile</h4>
+    <form action="" method="post">
+      {% csrf_token %}
+      <div class="w3-top">
+    <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+
+    
+    </div>
+    
+  DEMAT ID:
+  <input type="text" name="Name" placeholder="{{ user_data.username }}" size="20" readonly>
+
+  Name:
+  <input type="text" name="Name" placeholder="{{ user_data.first_name }} {{ user_data.last_name }}" size="20" readonly>
+  
+  PAN:  
+  <input type="text" name="Name" placeholder="{{ user_additional_data.Pan }}" size="20" readonly>
+
+  Date of birth:  
+  <input type="text" name="Name" placeholder="{{ user_additional_data.DateOfBirth }}" size="20" readonly>
+
+
+  </form>
+
+  </div>
+</div>
+
+<style>
+  input{
+    text-align:center;
+  }
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: black;
+  opacity: 1; /* Firefox */
+}
+</style>
+{% endblock %}

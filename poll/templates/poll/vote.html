@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <br><br>
+    <h4 class="header center orange-text">Vote</h4>
+    <form action="" method="post">
+      {% csrf_token %}
+      <div class="w3-top">
+    <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+
+    
+    </div>
+    
+   Event No:
+
+  <input type="text" name="Name" placeholder="{{ my_poll.PollID }}" size="20" readonly>
+  
+  Company Name:  
+  
+  <input type="text" name="Name" placeholder="{{ my_poll.Company.Name }}" size="20" readonly>
+
+  End Date:  
+  
+  <input type="text" name="Name" placeholder="{{ my_poll.EndDateTime }}" size="20" readonly>
+  
+  <p>Company preposition</p>
+  <textarea rows="4" cols="50" readonly>{{ my_poll.Content }}</textarea> <br>
+  
+  <label>
+      <input class="with-gap" name="Decision" type="radio" value="accept" />
+      <span>Accept</span>
+    </label>
+    <label>
+      <input class="with-gap" name="Decision" type="radio" value="reject" />
+      <span>Reject</span>
+    </label>
+
+  
+  
+   <input type="submit" value="Submit" onclick = "Warn();">
+  </form>
+
+  </div>
+</div>
+
+<style>
+  input{
+    text-align:center;
+  }
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: black;
+  opacity: 1; /* Firefox */
+}
+</style>
+{% endblock %}

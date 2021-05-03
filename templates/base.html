@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shareholder E-Voting</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
+<!-- M Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Actual Materialize CSS -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Custom CSS  -->
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    
+  <section class="fnavbar">
+
+    <nav class="nav-fixed">
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">Shareholder E-Voting</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#" onclick="toggleModal();">Home</a></li>
+            <li><a href="#" onclick="toggleModal();">About</a></li>
+            {% if user.is_authenticated %}
+            <li><a class="dropdown-trigger" data-target="dropdown-menu" href="#" onclick="toggleModal();">
+              {{ user.get_username }}<i class="material-icons right">arrow_drop_down</i></a>
+                          <!-- Dropdown -->
+                          <ul id="dropdown-menu" class="dropdown-content">
+                            <li><a href="{% url 'profile' %}">Profile</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{% url 'logout' %}">Log Out</a></li>
+                          </ul>
+              </li>
+              {% else %}
+              <li><a href="{% url 'login' %}" onclick="toggleModal();">Login</a></li>
+              {% endif %}
+            </ul>
+        </div>
+        
+      </nav>
+    
+      <ul class="sidenav" id="mobile-demo">
+        <li><a href="#" onclick="toggleModal();">Home</a></li>
+        <li><a href="#" onclick="toggleModal();">Profile</a></li>
+        <li><a href="#" onclick="toggleModal();">About</a></li>
+        <li><a href="#" onclick="toggleModal();">Contact Us</a></li>
+      </ul>
+
+</section>
+{% block content %}
+{% endblock %}
+</body>
+
+<!-- J-Query -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+<!-- Materialize Script  -->
+<script>
+    $('.dropdown-trigger').dropdown();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<!-- Custom js -->
+<script src="/static/loader.js"></script>
+</html>
