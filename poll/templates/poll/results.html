@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    
+    <br><br>
+    <h4 class="header center orange-text">Results</h4>
+    <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+    
+  <br>
+  <br>
+  <br>
+
+  </div>
+</div>
+
+<style>
+  input{
+    text-align:center;
+  }
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: black;
+  opacity: 1; /* Firefox */
+}
+</style>
+{% endblock %}
+
+{% block jscript %}
+<script>
+Highcharts.chart('container', {
+  chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false,
+      type: 'pie'
+  },
+  colors: ['#49c6fd', '#004d95'],
+  title: {
+      text: 'Poll result'
+  },
+  tooltip: {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+  },
+  plotOptions: {
+      pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+              enabled: true,
+              format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+              style: {
+                  color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+              }
+          }
+      }
+  },
+  series: [{
+      name: 'Poll',
+      colorByPoint: true,
+      data: [{
+          name: 'Yes',
+          y: 63,
+          sliced: true,
+          selected: true,
+          borderColor: '#b8de69',
+          borderWidth: 5
+      }, {
+          name: 'No',
+          y: 37
+      }]
+  }]
+});
+</script>
+{% endblock %}

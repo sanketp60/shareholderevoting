@@ -5,7 +5,7 @@
   <div class="container">
     <br><br>
     <h4 class="header center orange-text">Vote</h4>
-    <form action="" method="post">
+    <form action="/vote/register/" method="post" id="voteform">
       {% csrf_token %}
       <div class="w3-top">
     <div class="w3-bar w3-red w3-card w3-left-align w3-large">
@@ -15,7 +15,7 @@
     
    Event No:
 
-  <input type="text" name="Name" placeholder="{{ my_poll.PollID }}" size="20" readonly>
+  <input type="text" name="pollid" placeholder="{{ my_poll.PollID }}" value="{{ my_poll.PollID }}" size="20" readonly>
   
   Company Name:  
   
@@ -37,10 +37,14 @@
       <span>Reject</span>
     </label>
 
-  
-  
-   <input type="submit" value="Submit" onclick = "Warn();">
+  <br>
+  <br>
+  <button type="submit" form="voteform" value="Submit">Submit</button>
+   <!--input type="submit" value="Submit" onclick = "Warn();"-->
   </form>
+  <br>
+  <br>
+  <br>
 
   </div>
 </div>
