@@ -10,12 +10,10 @@
 
 body {
 	background: #f6f5f7;
-
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	font-family: 'Montserrat', sans-serif;
-
 }
 
 button {

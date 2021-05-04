@@ -23,11 +23,10 @@
 
     <nav class="nav-fixed">
         <div class="nav-wrapper">
-          <a href="#" class="brand-logo">Shareholder E-Voting</a>
+          <a href="/" class="brand-logo">Shareholder E-Voting</a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#" onclick="toggleModal();">Home</a></li>
-            <li><a href="#" onclick="toggleModal();">About</a></li>
+            <li><a href="/" onclick="toggleModal();">Home</a></li>
             {% if user.is_authenticated %}
             <li><a class="dropdown-trigger" data-target="dropdown-menu" href="#" onclick="toggleModal();">
               {{ user.get_username }}<i class="material-icons right">arrow_drop_down</i></a>
@@ -43,13 +42,16 @@
               {% endif %}
             </ul>
         </div>
-        
       </nav>
     
       <ul class="sidenav" id="mobile-demo">
-
-        <li><a href="#" onclick="toggleModal();">Home</a></li>
-        <li><a href="#" onclick="toggleModal();">About</a></li>
+        <li><a href="/" onclick="toggleModal();">Home</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'profile' %}" onclick="toggleModal();">Profile</a></li>
+        <li><a href="{% url 'logout' %}" onclick="toggleModal();">Log out</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}" onclick="toggleModal();">Log in</a></li>
+        {% endif %}
       </ul>
 
 </section>

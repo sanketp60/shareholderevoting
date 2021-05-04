@@ -5,6 +5,7 @@
   <div class="container">
     <br><br>
     <h4 class="header center orange-text">Vote</h4>
+    {% if allow_to_vote %}
     <form action="/vote/register/" method="post" id="voteform">
       {% csrf_token %}
       <div class="w3-top">
@@ -27,6 +28,11 @@
   
   <p>Company preposition</p>
   <textarea rows="4" cols="50" readonly>{{ my_poll.Content }}</textarea> <br>
+    {% if already_vote %}
+    You have already voted for this poll!
+    
+    {% else %}
+    
   
   <label>
       <input class="with-gap" name="Decision" type="radio" value="accept" />
@@ -41,7 +47,13 @@
   <br>
   <button type="submit" form="voteform" value="Submit">Submit</button>
    <!--input type="submit" value="Submit" onclick = "Warn();"-->
+
+    {% endif %}
   </form>
+    {% else %}
+    <input type="text" name="pollid" placeholder="You are not allowed to vote for this poll!" size="20" readonly>
+    {% endif %}
+    
   <br>
   <br>
   <br>

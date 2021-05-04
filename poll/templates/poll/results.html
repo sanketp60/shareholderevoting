@@ -7,8 +7,11 @@
     
     <br><br>
     <h4 class="header center orange-text">Results</h4>
+    {% if show_result %}
     <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
-    
+    {% else %}
+    <input type="text" name="pollid" placeholder="Result will be disclose on {{ result_datetime }}" size="20" readonly>
+    {% endif %}
   <br>
   <br>
   <br>
@@ -17,7 +20,7 @@
 </div>
 
 <style>
-  input{
+  input, label{
     text-align:center;
   }
   ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -38,7 +41,7 @@ Highcharts.chart('container', {
   },
   colors: ['#49c6fd', '#004d95'],
   title: {
-      text: 'Poll result'
+      text: '{{ company_name }}'+' - '+'{{ poll_content }}'
   },
   tooltip: {
       pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -61,14 +64,14 @@ Highcharts.chart('container', {
       colorByPoint: true,
       data: [{
           name: 'Yes',
-          y: 63,
+          y: {{ yes_votes }},
           sliced: true,
           selected: true,
           borderColor: '#b8de69',
           borderWidth: 5
       }, {
           name: 'No',
-          y: 37
+          y: {{ no_votes }}
       }]
   }]
 });

@@ -22,7 +22,7 @@ class Poll(models.Model):
     ResultDateTime = models.DateTimeField()
 
     def __str__(self):
-        return str(self.Company)+" - "+str(self.Content)
+        return str(self.Company)+" - "+str(self.Content)+" #"+str(self.PollID)
 
 class UserData(models.Model):
     UserID = models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE)
