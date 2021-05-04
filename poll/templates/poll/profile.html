@@ -24,13 +24,31 @@
 
   Date of birth:  
   <input type="text" name="Name" placeholder="{{ user_additional_data.DateOfBirth }}" size="20" readonly>
-
+  
+  Holdings data:
+  <table>
+    <tr>
+      <th>Company</th>
+      <th>No. of Shares</th>
+      <th>Avg. Price</th>
+    </tr>
+    {% for data in shares_data %}
+    <tr>
+      <td>{{  data.Company.Name }}</td>
+      <td>{{  data.Quantity }}</td>
+      <td>{{  data.Avg }}</td>
+    </tr>
+    
+    {% endfor %}
+  </table>
 
   </form>
-
+  
   </div>
 </div>
-
+<br>
+<br>
+<br>
 <style>
   input{
     text-align:center;

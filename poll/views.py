@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -9,7 +9,7 @@ from .models import Vote as VoteModel
 from .models import UserCompanyMapper as UserCompanyMapperModel
 
 def index(request):
-    return render(request, 'poll/index.html')
+    return redirect('login')
 
 def results(request, pollid):
     my_poll = PollModel.objects.get(PollID=pollid)
@@ -53,7 +53,8 @@ def vote(request, pollid):
 def profile(request):
     user_data = User.objects.get(id=request.user.id)
     user_additional_data = UserDataModel.objects.get(UserID=user_data)
-    context = {'user_data': user_data, 'user_additional_data': user_additional_data}
+    shares_data = UserCompanyMapperModel.objects.filter(User=user_data)
+    context = {'user_data': user_data, 'user_additional_data': user_additional_data, 'shares_data': shares_data}
     return render(request, 'poll/profile.html', context)
 
 @login_required(login_url='/login')
